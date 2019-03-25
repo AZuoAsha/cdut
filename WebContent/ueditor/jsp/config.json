@@ -1,0 +1,80 @@
+
+{
+	"physicsPath":"D://jee-oxygen/cdut/",
+    "imageActionName": "uploadimage", 
+    "imageFieldName": "upfile", 
+    "imageMaxSize": 2048000, 
+    "imageAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"], 
+    "imageCompressEnable": true, 
+    "imageCompressBorder": 1600,
+    "imageInsertAlign": "none",
+    "imageUrlPrefix": "http://localhost:8080/cdut/",
+    "imagePathFormat": "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
+                              
+    "physicsPath":"D://jee-oxygen/cdut/",
+    "scrawlActionName": "uploadscrawl", 
+    "scrawlFieldName": "upfile",
+    "scrawlPathFormat": "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}", 
+    "scrawlMaxSize": 2048000, 
+    "scrawlUrlPrefix": "http://localhost:8080/cdut/", 
+    "scrawlInsertAlign": "none",
+
+    "physicsPath":"D://jee-oxygen/cdut/",
+    "snapscreenActionName": "uploadimage", 
+    "snapscreenPathFormat": "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
+    "snapscreenUrlPrefix": "http://localhost:8080/cdut/", 
+    "snapscreenInsertAlign": "none", 
+
+    "physicsPath":"D://jee-oxygen/cdut2/",
+    "catcherLocalDomain": ["127.0.0.1", "localhost", "img.baidu.com"],
+    "catcherActionName": "catchimage", 
+    "catcherFieldName": "source", 
+    "catcherPathFormat": "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}", 
+    "catcherUrlPrefix": "http://localhost:8080/cdut/", 
+    "catcherMaxSize": 2048000, 
+    "catcherAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
+
+    "physicsPath":"D://jee-oxygen/cdut/",
+    "videoActionName": "uploadvideo", 
+    "videoFieldName": "upfile", 
+    "videoPathFormat": "/upload/video/{yyyy}{mm}{dd}/{time}{rand:6}",
+    "videoUrlPrefix": "http://localhost:8080/cdut/", 
+    "videoMaxSize": 102400000, 
+    "videoAllowFiles": [
+        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+        ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid"],
+    "physicsPath":"D://jee-oxygen/cdut/",
+    "fileActionName": "uploadfile", 
+    "fileFieldName": "upfile", 
+    "filePathFormat": "/upload/file/{yyyy}{mm}{dd}/{time}{rand:6}", 
+    "fileUrlPrefix": "http://localhost:8080/cdut/", 
+    "fileMaxSize": 51200000, 
+    "fileAllowFiles": [
+        ".png", ".jpg", ".jpeg", ".gif", ".bmp",
+        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+        ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid",
+        ".rar", ".zip", ".tar", ".gz", ".7z", ".bz2", ".cab", ".iso",
+        ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt", ".md", ".xml"
+    ], 
+    "physicsPath":"D://jee-oxygen/cdut/",
+    "imageManagerActionName": "listimage", 
+    "imageManagerListPath": "/upload/image/", 
+    "imageManagerListSize": 20,
+    "imageManagerUrlPrefix": "http://localhost:8080/cdut/", 
+    "imageManagerInsertAlign": "none",
+    "imageManagerAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"], 
+
+    "physicsPath":"D://jee-oxygen/cdut/",
+    "fileManagerActionName": "listfile", 
+    "fileManagerListPath": "/upload/file/",
+    "fileManagerUrlPrefix": "http://localhost:8080/cdut/",
+    "fileManagerListSize": 20, 
+    "fileManagerAllowFiles": [
+        ".png", ".jpg", ".jpeg", ".gif", ".bmp",
+        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+        ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid",
+        ".rar", ".zip", ".tar", ".gz", ".7z", ".bz2", ".cab", ".iso",
+        ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt", ".md", ".xml"
+    ] 
+
+}

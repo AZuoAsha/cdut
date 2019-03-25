@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cdut.com.cn.mappers.UserMapper">
+	<!-- 新闻操作 表-->
+	<insert id="register" parameterType="User" useGeneratedKeys="true">
+	insert into user(email,password,phone,passwordcfg,registerTime) values(#{email},#{password},#{phone},#{passwordcfg},#{registerTime})
+	</insert>
+	<select id="login" parameterType="User" resultType="User">
+		 select * from user where email=#{email} and password=#{password}
+	</select>
+	<update id="update" parameterType="User">
+		update user set password=#{password},passwordcfg=#{passwordcfg} where phone=#{phone}
+	</update>
+	<select id="findAll" resultType="User">
+		select * from user
+	</select>
+	<select id="config" parameterType="User" resultType="User">
+		select * from user where email=#{email} and phone=#{phone}
+	</select>
+</mapper>

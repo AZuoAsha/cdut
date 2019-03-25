@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>管理员入口</title>
+
+<link rel="stylesheet" type="text/css" href="css2/style.css" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js2/main.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+	  $("form :input.required").each(function(){
+         var $required = $("<strong class='high'> *</strong>"); //创建元素
+         $(this).parent().append($required); //然后将它追加到文档中
+	  });
+
+	  //3.文本框失去焦点后开始验证
+	    $('form :input').blur(function(){
+	    var $parent = $(this).parent();
+        $parent.find(".formtips").remove();
+
+      //3.1验证用户名
+         if( $(this).is('#signin-username') ){
+         if( this.value=="" || this.value.length < 6 ){
+         var errorMsg = '请输入至少6位的用户名';
+            $parent.append("<span class='formtips onError' style='color:red'><br>"+errorMsg+"</span>");
+          }else{
+          /* var okMsg = '格式输入正确';
+          $parent.append("<span class='formtips onSuccess' style='color:blue'><br>"+okMsg+"</span>"); */
+          if(this.value=="abcdef"){
+        	  var okMsgRe = '用户名正确';
+              $parent.append("<span class='formtips onSuccess' style='color:blue'><br>"+okMsgRe+"</span>");
+              }else{
+
+            	  var okMsgF = '用户名错误';
+                  $parent.append("<span class='formtips onError' style='color:red'><br>"+okMsgF+"</span>");
+                  }
+        }
+      }
+
+       if( $(this).is('#signin-password') ){
+        if( this.value=="" || ( this.value!="" && !/^[A-Za-z0-9]{6,20}$/.test(this.value) ) ){
+        	var errorMsg = '请输入密码6-20位字母数字组合';
+        	  $parent.append("<span class='formtips onError' style='color:red'><br>"+errorMsg+"</span>");
+                }else{
+        	  /*  var okMsg = '输入正确';
+        	   $parent.append("<span class='formtips onSuccess' style='color:blue'><br>"+okMsg+"</span>"); */
+        	   if(this.value=="abcdef"){
+        		   var okMsgR = '密码正确';
+            	   $parent.append("<span class='formtips onSuccess' style='color:blue'><br>"+okMsgR+"</span>");
+            	   }else{
+            		   var okMsgFa = '密码错误';
+                	   $parent.append("<span class='formtips onError' style='color:red'><br>"+okMsgFa+"</span>");
+                	   }
+        	 }
+       }
+         
+         //3.3实现一边输入一边验证
+       }).keyup(function(){
+       $(this).triggerHandler("blur");
+       }).focus(function(){
+        $(this).triggerHandler("blur");
+       });//end blu
+
+	    //3.4提交，最终验证。
+	     $('#send').click(function(){
+	     $("form :input.required").trigger('blur');
+	     var numError = $('form .onError').length;
+	   if(numError){
+	        return false;
+	     } else{
+	    	// alert("注册成功,密码已发到你的邮箱,请查收.");
+	    	 $.ajax({
+	 	        type: "get",
+	 	        url: "receive/manner.do",
+	 	        dataType: "json",
+	 	        async:true,
+	 	        success: function (data ,textStatus, jqXHR)
+	 	        {
+	 	        	 window.location.href = 'releaseNews.jsp';
+	 	        },
+	 	        error:function (XMLHttpRequest, textStatus, errorThrown) {    
+	 	        	 window.location.href = 'releaseNews.jsp';  
+	 	        }
+	 	     });
+
+	 	     	
+	    	     }
+	     });
+
+	     //1.选中输入的时候输入框变色
+	     $(":input").focus(function(){
+	       $(this).addClass("focus");
+	      }).blur(function(){
+	          $(this).removeClass("focus");
+	    });
+  });
+  </script>
+  
+</head>
+
+<body>
+<div id="main">
+	<div class="demo">
+		<nav class="main_nav">
+			<ul>
+				<li><a class="cd-signin" href="#0">管理员登录</a></li>
+			<!-- 	<li><a class="cd-signup" href="#0">注册</a></li> -->
+			</ul>
+		</nav>
+	</div>
+	<div class="cd-user-modal"> 
+		<div class="cd-user-modal-container">
+			<ul class="cd-switcher">
+				<li><a href="#0">管理员登录</a></li>
+				<!-- <li><a href="#0">注册新用户</a></li> -->
+			</ul>
+
+			<div id="cd-login"> <!-- 登录表单 -->
+				<form class="cd-form" action="receive/manner.do" method="post">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signin-username">用户名</label>
+						<input class="full-width has-padding has-border" id="signin-username" type="text" placeholder="输入用户名" name="mannerName" >
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">密码</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="输入密码" name="mannerPassword">
+					</p>
+					<p class="fieldset">
+						<input class="full-width2" type="submit" id="send" value="登 录">
+					</p>
+				</form>
+			</div>
+
+			<!-- <div id="cd-signup"> 注册表单
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-username">用户名</label>
+						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="输入用户名">
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signup-email">邮箱</label>
+						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail">
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">密码</label>
+						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="输入密码">
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="accept-terms">
+						<label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width2" type="submit" value="注册新用户">
+					</p>
+				</form>
+			</div> -->
+
+			<a href="#0" class="cd-close-form">关闭</a>
+		</div>
+	</div> 
+	
+</div>
+
+</body>
+</html>

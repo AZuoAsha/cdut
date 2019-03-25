@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery简单实用的分页插件Page - xw素材网</title>
+<link rel="stylesheet" href="src/jquery.page.css">
+</head>
+<body>
+<br><br><br>
+<div id="page"></div>
+<script src="src/jquery.min.js"></script>
+<script type="text/javascript" src="src/jquery.page.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#page").Page({
+	  totalPages: 9,//分页总数
+	  liNums: 7,//分页的数字按钮数(建议取奇数)
+	  activeClass: 'activP', //active 类样式定义
+	  callBack : function(page){
+			//console.log(page)
+	  }
+  });
+	})
+</script>
+
+</body>
+</html>

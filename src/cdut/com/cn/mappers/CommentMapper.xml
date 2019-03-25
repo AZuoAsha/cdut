@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cdut.com.cn.mappers.CommentMapper">
+	<!-- 新闻操作 表-->
+	<insert id="add" parameterType="Comment" useGeneratedKeys="true">
+	insert into comment(commentContext,commentTime,newsId,commentUser,newsTitle) values(#{commentContext},#{commentTime},#{newsId},#{commentUser},#{newsTitle})
+	</insert>
+	
+	<select id="findAll" resultType="Comment" parameterType="Comment">
+		select * from comment where newsId=#{newsId}
+	</select>
+	<select id="findAllTitle" resultType="Comment" parameterType="Comment">
+		select * from comment where newsTitle=#{newsTitle}
+	</select>
+	<delete id="delete" parameterType="String">
+		delete from comment where id=#{id}
+	</delete>
+	
+	<select id="findOne" parameterType="long" resultType="Comment">
+		select * from comment where id=#{id}
+	</select>
+
+</mapper>

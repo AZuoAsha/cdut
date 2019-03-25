@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cdut.com.cn.mappers.NewsMapper">
+	<!-- 新闻操作 表-->
+	<insert id="addNews" parameterType="News" useGeneratedKeys="true">
+	insert into news(newsTittle,newsContext,releaseTime,newsType,releaseInstitution) values(#{newsTittle},#{newsContext},#{releaseTime},#{newsType},#{releaseInstitution})
+	</insert>
+	
+	<select id="findAll" resultType="News">
+		select * from news where newsType=#{newsType}
+	</select>
+	<delete id="delete" parameterType="String">
+		delete from news where newsTittle=#{newsTittle}
+	</delete>
+	
+	<select id="findOneTo" parameterType="News" resultType="News">
+		select * from news where newsType=#{newsType} and newsTittle=#{newsTittle}
+	</select>
+	
+	<select id="findOne" parameterType="long" resultType="News">
+		select * from news where id=#{id}<!-- select * from news where order by id desc limit row=#{row},count=#{count} row代表每一页的行数，count代表页码，（实现分页），先倒叙再分页
+											select count(id) from news 查询新闻条数的SQL语句 
+											select * from news order by id desc 倒叙取出数据（降序）-->
+	</select>
+	<!-- 操作文件表 -->
+	<insert id="addFile" parameterType="FileUpLoad" useGeneratedKeys="true">
+	insert into upload(fileName,releaseTime,releaser,filePath,showName) values(#{fileName},#{releaseTime},#{releaser},#{filePath},#{showName})
+	</insert>
+	<delete id="deleteFile" parameterType="String">
+		delete from upload where showName=#{showName}
+	</delete>
+
+	<select id="findAllFile" resultType="FileUpLoad">
+		select * from upload
+	</select>
+
+	<select id="findOneFile" parameterType="long" resultType="FileUpLoad">
+		select * from upload where id=#{id}
+	</select>
+
+</mapper>

@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//WebContent/filemannger/delete/deleteFile.jsp=UTF-8
+encoding//WebContent/indexPictureShow/deletePicture.jsp=UTF-8
+encoding//WebContent/indexPictureShow/releasePicture.jsp=UTF-8
+encoding//WebContent/notice/deleteNotice.jsp=UTF-8
+encoding//WebContent/notice/releaseFail.jsp=UTF-8
+encoding//WebContent/notice/releaseSuccess.jsp=UTF-8
+encoding//src/db.properties=UTF-8
+encoding//src/log4j.properties=UTF-8
